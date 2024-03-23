@@ -1,10 +1,9 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, UserRole } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
 const main = async () => {
   // --> create
-
   // const create = await prisma.post.create({
   //   data: {
   //     title: "post title",
@@ -13,7 +12,6 @@ const main = async () => {
   // });
 
   //  --> create many
-
   // const createMany = await prisma.post.createMany({
   //   data: [
   //     {
@@ -33,21 +31,21 @@ const main = async () => {
   // });
 
   //  --> create user
-  // const createUser = await prisma.user.create({
-  //   data: {
-  //     username: "user1",
-  //     email: "user2@ph.com",
-  //     role: UserRole.user,
-  //   },
-  // });
+  const createUser = await prisma.user.create({
+    data: {
+      username: "user1",
+      email: "user2@ph.com",
+      role: UserRole.user,
+    },
+  });
 
   // --> create profile
-  // const createProfile = await prisma.profile.create({
-  //   data: {
-  //     bio: "this is bio...",
-  //     userId: 1,
-  //   },
-  // });
+  const createProfile = await prisma.profile.create({
+    data: {
+      bio: "this is bio...",
+      userId: 1,
+    },
+  });
 
   // --> create category
   const createCategory = await prisma.category.create({
@@ -83,4 +81,5 @@ const main = async () => {
 
   console.log(createPost);
 };
+
 main();
